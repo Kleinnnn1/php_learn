@@ -7,31 +7,40 @@
 </head>
 <body>
     <form action="index.php" method="post">
-        <label>enter username:</label>
-        <input type="text" name="username">
-        <input type="submit" value="search">
+        <label>username:</label>
+        <input type="text" name="username"><br>
+        <label>password:</label>
+        <input type="password" name="password"><br>
+        <input type="submit" name="login" value="Log in">
     </form>
 </body>
 </html>
 
+
 <?php
+    //isset() = returns true if a variable is declared and not null
+    //empyt() = returns true if a variable is not declared, false, null, ""
+    /*
+    foreach($_POST as $key => $value) {
+        echo "{$key} = {$value} <br>";
+    }
+    */
+    if(isset($_POST["login"])) {
+        
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
-
-   //associative array = key pair values
-    $users = array("Kenn"=> "Male",
-                    "Kc"=> "Female",
-                    "Niel" => "Male"
-);
-
-    $user = $users[$_POST["username"]];
-    echo $user;
-    //$users["Kc"] = "Male";
-    //$users["Kath"] = "Female";
-    //$user_keys_array = array_keys($users);
-
-    /*foreach($users as $key => $value) {
-        echo "{$key} {$value} <br>";
-    }*/
-
+        if(empty($password || $username)) {
+            echo "username & password is required";
+        }
+        elseif(empty($username)) {
+            echo "username is required";
+        } 
+        elseif(empty($password)) {
+            echo "password is missing";
+        }
+        else{
+            echo "hello user {$username}";
+        }
+    }
 ?>
-
