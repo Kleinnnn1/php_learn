@@ -11,35 +11,36 @@
         <input type="text" name="username"><br>
         <label>password:</label>
         <input type="password" name="password"><br>
-        <label>email:</label>
-        <input type="text" name="email"><br>
-        <input type="submit" value="start">
-
+        <input type="submit" name="login" value="Log in">
     </form>
 </body>
 </html>
-   
+
 
 <?php
-    echo $_POST["username"] . "<br>";
-    echo $_POST["password"]. "<br>";
-    echo $_POST["email"]. "<br>";
+    //isset() = returns true if a variable is declared and not null
+    //empyt() = returns true if a variable is not declared, false, null, ""
+    /*
+    foreach($_POST as $key => $value) {
+        echo "{$key} = {$value} <br>";
+    }
+    */
+    if(isset($_POST["login"])) {
+        
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
-//GET METHOD DATA IS APPENDED TO URL NOT SECURE
-// CHAR LIMT
-// BOOK MARK IS POSSIBLE WITH VALUES
-// GET REQUESED CAN BE CACHED
-// BETTER FOR SEARCH PAGE
-// USE GET IF THE DATA IS NOT IMPORTANT
-
-
-//GET POST DATA IS PACKAGE INSIDE THE BODY OF THE HTTP REQUEST
-// MORE SECURE
-// NO DATA LIMIT
-// CANNOT BOOKMARK
-// GET REQUESED ARE NOT CACHED
-// BETTER FOR SUBMITTING CREDENTIALS
-// USE IF THE DATA IS IMPORTANT
-
+        if(empty($password || $username)) {
+            echo "username & password is required";
+        }
+        elseif(empty($username)) {
+            echo "username is required";
+        } 
+        elseif(empty($password)) {
+            echo "password is missing";
+        }
+        else{
+            echo "hello user {$username}";
+        }
+    }
 ?>
-
