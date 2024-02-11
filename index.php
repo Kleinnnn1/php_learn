@@ -7,28 +7,37 @@
 </head>
 <body>
     <form action="index.php" method="post">
-        <label>enter username:</label>
-        <input type="text" name="username">
-        <input type="submit" value="search">
+        <label>username: </label>
+        <input type="text" name="username"><br>
+        <label>age: </label>
+        <input type="text" name="age"><br>
+        <label>email: </label>
+        <input type="text" name="email"><br>
+        <input type="submit" name="login" value="login">
     </form>
 </body>
 </html>
+<?php
+    //sanitize and validate
+    if(isset($_POST["login"])) {
+        
+      
+       $age = filter_input(INPUT_POST, "age", FILTER_VALIDATE_INT);
+        
+       if(empty($age)) {
+        echo "enter your age.<br>";
+       }
+       else {
+        echo "You are {$age} yrs. old.<br>";
+       }
+    $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
 
-<?php  //associative array = key pair values
-    $users = array("Kenn"=> "Male",
-                    "Kc"=> "Female",
-                    "Niel" => "Male"
-);
-    $username = $_POST["username"];
-    $user = $users[$_POST["username"]];
-    echo "User data: <br>";
-    echo "name: {$username} gender: {$user}"
-    //$users["Kc"] = "Male";
-    //$users["Kath"] = "Female";
-    //$user_keys_array = array_keys($users);
-
-    /*foreach($users as $key => $value) {
-        echo "{$key} {$value} <br>";
-    }*/
+       if(empty($email)) {
+        echo "enter a valid email.";
+       }
+       else {
+        echo "your email is valid.";
+       }
+    }
 
 ?>
