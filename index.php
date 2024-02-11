@@ -1,3 +1,13 @@
+<?php
+    /*include() = copies the conten of a file (php/html/text)
+                    and includes it in your php file.
+                    Sections of our website become reusable 
+                    Changes only need to be made in one place.
+
+    */
+    include("header.html")
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,29 +16,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="index.php" method="post">
-        <label>enter username:</label>
-        <input type="text" name="username">
-        <input type="submit" value="search">
-    </form>
+    <b style="color: dark;">HomePage</b> <br>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur tenetur dolores omnis vitae obcaecati similique impedit, perspiciatis repudiandae rem, cumque expedita? Autem sunt dolorum similique aliquam dolorem laborum quis nesciunt!
 </body>
 </html>
 
-<?php  //associative array = key pair values
-    $users = array("Kenn"=> "Male",
-                    "Kc"=> "Female",
-                    "Niel" => "Male"
-);
-    $username = $_POST["username"];
-    $user = $users[$_POST["username"]];
-    echo "User data: <br>";
-    echo "name: {$username} gender: {$user}"
-    //$users["Kc"] = "Male";
-    //$users["Kath"] = "Female";
-    //$user_keys_array = array_keys($users);
-
-    /*foreach($users as $key => $value) {
-        echo "{$key} {$value} <br>";
-    }*/
-
+<?php
+    include("footer.html");
 ?>
