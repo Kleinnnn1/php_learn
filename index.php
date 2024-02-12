@@ -1,26 +1,20 @@
 <?php
-    /*include() = copies the conten of a file (php/html/text)
-                    and includes it in your php file.
-                    Sections of our website become reusable 
-                    Changes only need to be made in one place.
+    // cookie = store information about user stored in a user's web-browser
+    //          targeted adverstisement, browsing preferences, and
+    //          other non-sensitive data.
 
-    */
-    include("header.html")
-?>
+    setcookie("location", "ketkai", time() + 86400, "/");
+    setcookie("location", "wao", time() + 86400, "/");
+    setcookie("date", "10-11-12", time() + 86400, "/");
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <b style="color: dark;">HomePage</b> <br>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur tenetur dolores omnis vitae obcaecati similique impedit, perspiciatis repudiandae rem, cumque expedita? Autem sunt dolorum similique aliquam dolorem laborum quis nesciunt!
-</body>
-</html>
 
-<?php
-    include("footer.html");
+    if(isset($_COOKIE["date"])) {
+        echo "The date {$_COOKIE["date"]} is available";
+    }
+    else {
+        echo"not found.";
+    }
+
+
+
 ?>
