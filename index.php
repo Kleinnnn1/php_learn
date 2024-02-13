@@ -7,28 +7,36 @@
 </head>
 <body>
     <form action="index.php" method="post">
-        <label>enter username:</label>
-        <input type="text" name="username">
-        <input type="submit" value="search">
+        <label>username:</label><br>
+        <input type="text" name="username"><br>
+        <label>password:</label><br>
+        <input type="password" name="password"><br>
+        <input type="submit" name="login" value="login">
+        <input type="submit" name="signup" value="signup">
+
     </form>
 </body>
 </html>
 
-<?php  //associative array = key pair values
-    $users = array("Kenn"=> "Male",
-                    "Kc"=> "Female",
-                    "Niel" => "Male"
-);
-    $username = $_POST["username"];
-    $user = $users[$_POST["username"]];
-    echo "User data: <br>";
-    echo "name: {$username} gender: {$user}"
-    //$users["Kc"] = "Male";
-    //$users["Kath"] = "Female";
-    //$user_keys_array = array_keys($users);
+<?php
+    session_start();
 
-    /*foreach($users as $key => $value) {
-        echo "{$key} {$value} <br>";
-    }*/
+    if(isset($_POST["login"])) {
+
+        if(!empty($_POST["username"]) && !empty($_POST["password"])) {
+            $_SESSION["username"] = $_POST["username"];
+            $_SESSION["password"] = $_POST["password"];
+    
+            header("Location: home.php");
+        }
+
+        else {
+            echo "username or password required.";
+        }
+    }
+
+    if(isset($_POST["signup"])) {
+        header("Location: register.php");
+    }
 
 ?>
