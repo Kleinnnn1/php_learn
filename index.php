@@ -1,34 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="index.php" method="post">
-        <label>enter username:</label>
-        <input type="text" name="username">
-        <input type="submit" value="search">
-    </form>
-</body>
-</html>
+<?php
+    /*hashing = transforming sensitive data via mathematical process.
+    Similar to encryption that hides the original data from 3rd parties.
+    */
 
-<?php  //associative array = key pair values
-    $users = array("Kenn"=> "Male",
-                    "Kc"=> "Female",
-                    "Niel" => "Male"
-);
-    $username = $_POST["username"];
-    $user = $users[$_POST["username"]];
-    echo "User data: <br>";
-    echo "name: {$username} gender: {$user}"
-    //$users["Kc"] = "Male";
-    //$users["Kath"] = "Female";
-    //$user_keys_array = array_keys($users);
+    $password = "esdfj@#3";
 
-    /*foreach($users as $key => $value) {
-        echo "{$key} {$value} <br>";
-    }*/
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
-?>
+    if(password_verify("esdfj@#3", $hash)) {
+        echo "verify";
+    }
+    else {
+        echo "error";
+    }
+?>  
